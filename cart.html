@@ -8,26 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
-
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
   <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
+    div{
+      text-align: center;
     }
   </style>
+
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
@@ -43,14 +32,123 @@
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+
+  <!--Comienza el codigo-->
+
+  <div style="margin-top: 20px;" class="container" id="messagePlace">
+    <div class="wrapper wrapper-content animated fadeInRight">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="ibox">
+            <div class="ibox-title">
+              <h5>Items en tu carrito<i class="fa fa-shopping-cart"></i></h5>
+            </div>
+
+            <!--Primer articulo del carrito-->
+            <div id="cartArticles"></div>
+
+            <div class="ibox-content">
+              <a href="products.html"><button class="btn btn-white"><i class="fa fa-arrow-left"></i> Volver a la
+                  tienda</button></a>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-3">
+
+          <!--Subtotal-->
+          <div class="ibox ">
+            <div class="ibox-title">
+              <h4>Subtotal</h4>
+            </div>
+            <div class="ibox-content">
+              <h2 id="subTotalPrice" class="font-bold">
+                
+              </h2>
+              <hr>
+
+            </div>
+          </div>
+
+          <!--Envío-->
+          <div class="ibox" id="envioSelect">
+            <div class="ibox-title">
+              <h5>Método de envío</h5>
+            </div>
+            <div class="ibox-content">
+              <form id=delivery-form>
+                <div class="radio-form-field">
+                  <label for="std-method">Standard <span class="badge badge-secondary">12-15 días</span> (+5%)</label>
+                  <input style="width: auto;" type="radio" name="delivery-method" id="std-method">
+                </div>
+                <div class="radio-form-field">
+                  <label for="express-method">Express <span class="badge badge-secondary">5-8 días</span> (+7%)</label>
+                  <input style="width: auto;" type="radio" name="delivery-method" id="express-method">
+                </div>
+                <div class="radio-form-field">
+                  <label for="premium-method">Premium <span class="badge badge-secondary">2-5 días</span> (+15%)</label>
+                  <input style="width: auto;" type="radio" name="delivery-method" id="premium-method">
+                </div>
+              </form>
+              <span>
+                Costo de envío:
+              </span>
+              <h2 id="deliveryCost" class="font-bold">
+                $0
+              </h2>
+              <hr>
+              <div class="m-t-sm">
+
+              </div>
+            </div>
+          </div>
+
+          <!--Summary del carrito-->
+          <div class="ibox">
+            <div class="ibox-title">
+              <h5>Resumen de carrito</h5>
+            </div>
+            <div class="ibox-content">
+              <span>
+                Total
+              </span>
+              <h2 id="totalPrice" class="font-bold">
+                $0
+              </h2>
+              <hr>
+              <div class="m-t-sm">
+                <div class="btn-group">
+                  <button class="btn btn-primary btn-sm" id="btnDone" onclick="verifyChecked()"><i
+                      class="fa fa-shopping-cart"></i> Finalizar compra</button>
+                  <a href="products.html" class="btn btn-white btn-sm"> Cancelar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Forma de pago-->
+          <div class="ibox" id="pagoSelect">
+            <div class="ibox-title">
+              <h5>Forma de pago</h5>
+            </div>
+            <div class="ibox-content">
+              <div class="radio-form-field">
+                <label for="credit-card">Tarjeta de crédito</label>
+                <input style="width: auto;" type="radio" name="payment-means" id="credit-card">
+              </div>
+              <div class="radio-form-field">
+                <label for="transfer">Transferencia Bancaria</label>
+                <input style="width: auto;" type="radio" name="payment-means" id="transfer">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>

@@ -34,17 +34,49 @@
       padding: 15px;
       margin: auto;
     }
+
+  .form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+  }
+  .form-signin .checkbox {
+    font-weight: 400;
+  }
+  .form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+  }
+  .form-signin .form-control:focus {
+    z-index: 2;
+  }
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
   </style>
+
 </head>
 
-<body class="text-center">
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 16/08/2020) -> Punto 3 y 4.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
+<body class>
+    <form class="form-signin" id="form-evento">
+      <img src="img/login.png" alt="" class="signin">
+      <h1 class="h3 mb-3 font-weight-normal">Por favor, ingresa</h1>
+      <input type="text" id="inputEmail" class="form-control entrada" placeholder="Nombre de usuario" required="" autofocus="">
+      <input type="password" id="inputPassword" class="form-control entrada" placeholder="Contraseña" required="">
+      <button class="btn btn-lg btn-primary btn-block entrada" type="submit">Ingresa</button>
+      <p class="mt-5 mb-3 text-muted">2020 © </p>
+    </form>
   </div>
 
   <script src="js/init.js"></script>

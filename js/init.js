@@ -40,8 +40,49 @@ var getJSONData = function(url){
     });
 }
 
+function mostrarNombreDeUsuarioNav(){
+  let htmlContentToAppend = "";
+  htmlContentToAppend +=`
+            <div class="py-2 d-none d-md-inline-block" id="nombUser"><div>
+            `
+  
+
+  document.getElementsByClassName("site-header").innerHTML = htmlContentToAppend;
+}
+
+if (!(sessionStorage.getItem('visitado') === 'true') && !location.href.endsWith("login.html")) {
+  window.location.href = "login.html";
+} 
+
+function deslogueo(evento){
+  sessionStorage.removeItem("usuarioActual");
+  sessionStorage.setItem("visitado",false);
+}
+
+function createDrop(){
+  let htmlContentToAppend = "";
+  let usuario = JSON.parse(sessionStorage.getItem("usuarioActual"));
+  htmlContentToAppend +=`
+  <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    `+ usuario.email +`
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="cart.html">Mi Carrito</a>
+    <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+    <a class="dropdown-item" href="login.html" onclick="deslogueo()" >Cerrar sesión</a>
+  </div>
+</div>
+            `
+       document.getElementById("contenedorDrop").innerHTML = htmlContentToAppend;
+}
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+    let contDropdown = document.createElement("div");
+    contDropdown.id = "contenedorDrop";
+    document.querySelector("nav.site-header").lastElementChild.appendChild(contDropdown);
+    createDrop();
+    document.querySelector("body > nav > div > a:nth-child(5)").remove();
 });

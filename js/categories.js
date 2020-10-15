@@ -83,9 +83,11 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+    showSpinner();
     getJSONData(CATEGORIES_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
+            hideSpinner();
         }
     });
 

@@ -2,6 +2,7 @@
 <!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
 <html lang="en">
 
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,14 +26,50 @@
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 13/09/2020) y Entrega 4 (Fecha de entrega: 20/09/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+
+  <div id="containerPrincipal"></div>
+
+  <!--Productos Relacionados-->
+  <section>
+    <div class="container">
+      <h3 class="text-center font-weight-bold mb-5 mt-5">Productos Relacionados</h3>
+      <div class="row d-flex equal" id="prodRel">
+      </div>
+    </div>
+  </section>
+
+  <!--Comentarios -->
+  <div class="row d-flex justify-content-center mt-100 mb-100">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body text-center">
+          <h3 class="card-title">Comentarios del producto</h3>
+        </div>
+        <div class="comment-widgets" id="ComBox">
+        </div>
+      </div>
     </div>
   </div>
+
+  <!--Agregar comentario-->
+  <div class="card">
+    <div id="comment" class="card-body text-center">
+          <form onsubmit="">
+              <div class="p-2"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="user" width="50" class="rounded-circle"></div>
+                  <div id="nombreComentador" class="comment-text w-100">
+                  </div>
+            <fieldset>
+                <textarea placeholder="Ingrese su reseña" id="review" cols="30" rows="4" cols="50" required></textarea>
+                <input type="submit" class="btn btn-light float-center">
+            </fieldset>
+            <span>Puntuación (1-5):</span>
+            <input type="number" placeholder="Puntuacion" min="1" max="5" >
+          </form>
+      </div>
+  </div>
+
+
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">
@@ -54,6 +91,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
+
 </body>
 
 </html>
