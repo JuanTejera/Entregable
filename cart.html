@@ -79,7 +79,7 @@
             <div class="ibox-content">
               <form id=delivery-form>
                 <div class="radio-form-field">
-                  <label for="std-method">Standard <span class="badge badge-secondary">12-15 días</span> (+5%)</label>
+                  <label for="std-method">Standard <span class="badge badge-secondary">12-15 días</span> (+5%)</label >
                   <input style="width: auto;" type="radio" name="delivery-method" id="std-method">
                 </div>
                 <div class="radio-form-field">
@@ -104,6 +104,178 @@
             </div>
           </div>
 
+          <!--Forma de pago-->
+          <div class="ibox" id="pagoSelect">
+            <div class="ibox-title">
+              <!-- Boton para invocar el modal de pago -->
+              <button id="btnDatosPago" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#payModal">
+                Elegir forma de pago
+              </button>
+            </div>
+
+          <!--Direccion de envio-->
+            <div class="ibox" id="shippingAdress">
+              <div class="ibox-title">
+                <!-- Boton para invocar el modal de direccion de envio -->
+                <button id="btnDatosEnvio" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#shippingData">
+                  Dirección de envío
+                </button>
+              </div>
+            </div>
+
+            <!-- Modal forma de pago -->
+            <div class="modal fade" id="payModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Forma de pago</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="radio-form-field">
+                      <div class="card wish-list pb-1">
+                        <div class="card-body">
+                        <form onsubmit="paymentSelected()" > <!-- Empieza el form-->
+
+                          <h5 class="col-6">Tarjeta de credito: <input style="width: auto;" type="radio" name="delivery-method" id="creditCardOption" onclick="enableCardMethod()" checked></h5>
+                          
+                          <hr>
+                
+                          <!-- Grid row -->
+                          <div class="row">
+                
+                            <!-- Grid column -->
+                            <div class="col-lg-6">
+                
+                              <!-- First name -->
+                              <div class="md-form md-outline mb-0 mb-lg-4 justify-content-start">
+                                <input type="text" minlength="10" pattern="\d*" placeholder="Número de tarjeta" id="cardNumber" class="form-control mb-0 mb-lg-2" required>
+                              </div>
+                
+                            </div>
+                            <!-- Grid column -->
+                
+                            <!-- Grid column -->
+                            <div class="col-lg-6">
+                
+                              <!-- Last name -->
+                              <div class="md-form md-outline">
+                                <input type="text" placeholder="CVV" id="cvv" minlength="3" class="form-control" required>
+                              </div>
+                
+                            </div>
+                            <!-- Grid column -->
+                
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <label for="expDate">Fecha de Venicimiento: </label>
+                              <input type="text" placeholder="MM/AA" id="expDate" class="form-control" required>
+                            </div>
+                          </div>
+
+                          <br>
+                          <br>
+
+                        <h5 class="col-8">Transferencia Bancaria: <input style="width: auto;" minlength="10" pattern="\d*" type="radio" name="delivery-method" id="bankTransferdOption" onclick="enableBankMethod()"></h5>
+                        <hr>
+                
+                          <!-- Grid row -->
+                          <div class="row">
+                
+                            <!-- Grid column -->
+                            <div class="col-lg-6">
+                
+                              <!-- First name -->
+                              <div class="md-form md-outline mb-0 mb-lg-4 justify-content-start">
+                                <input type="number" minlength="10" pattern="\d*" placeholder="Número de cuenta" id="accountNumber" class="form-control mb-0 mb-lg-2"  disabled required>
+                              </div>
+                
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" >Seleccionar</button>
+                  </div>
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal de la direccion de envio-->
+          <div class="modal fade" id="shippingData" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Envío </h5><i class="fa fa-shipping-fast"></i>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="radio-form-field">
+                    <div class="card wish-list pb-1">
+                      <div class="card-body">
+                      <form onsubmit="shippingSelected()"> <!-- Empieza el form-->
+
+                        <h5 class="col-6">Dirección de envío:</h5>
+                        
+                        <hr>
+              
+                        <!-- Grid row -->
+                        <div class="row">
+              
+                          <!-- Grid column -->
+                          <div class="col-lg-6">
+              
+                            <div class="md-form md-outline mb-0 mb-lg-4 justify-content-start">
+                              <input type="text" minlength="10"  placeholder="Calle"  class="form-control mb-0 mb-lg-2" required>
+                            </div>
+                          </div>
+              
+                          <!-- Grid column -->
+                          <div class="col-lg-6">
+                            <div class="md-form md-outline">
+                              <input type="text" placeholder="Esquina" minlength="3" class="form-control" required>
+                            </div>
+                          </div>
+                        </div>
+
+                        
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <input type="text" minlength="3" placeholder="Número" pattern="\d*" class="form-control" required>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <div class="md-form md-outline">
+                              <br>
+                              <input type="text"  placeholder="País" class="form-control" required>
+                          </div>
+                          </div>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary" >Seleccionar</button>
+                </div>
+              </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
           <!--Summary del carrito-->
           <div class="ibox">
             <div class="ibox-title">
@@ -127,22 +299,6 @@
             </div>
           </div>
 
-          <!--Forma de pago-->
-          <div class="ibox" id="pagoSelect">
-            <div class="ibox-title">
-              <h5>Forma de pago</h5>
-            </div>
-            <div class="ibox-content">
-              <div class="radio-form-field">
-                <label for="credit-card">Tarjeta de crédito</label>
-                <input style="width: auto;" type="radio" name="payment-means" id="credit-card">
-              </div>
-              <div class="radio-form-field">
-                <label for="transfer">Transferencia Bancaria</label>
-                <input style="width: auto;" type="radio" name="payment-means" id="transfer">
-              </div>
-            </div>
-          </div>
 
         </div>
       </div>
