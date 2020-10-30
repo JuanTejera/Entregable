@@ -29,6 +29,10 @@ function calculateShippingCosts(shippingRatio) {
     return shippingCosts;
 }
 
+function submitEventHandler(evento){ 
+    evento.preventDefault(); //evita el envio del form
+    return true;//al final la info se envie al servidor
+}
 
 
 function redirect() {
@@ -37,10 +41,12 @@ function redirect() {
 
 function paymentSelected() {
     sessionStorage.setItem('metodoPago', 'true');
+    $('#payModal').modal('hide'); //Cierra el modal
 }
 
 function shippingSelected() {
     sessionStorage.setItem('shipping', 'true');
+    $('#shippingData').modal('hide'); //Cierra el modal
 }
 
 function disableCardMethod() {
@@ -82,10 +88,10 @@ function verifyChecked() {
             document.getElementById("envioSelect").style.color = "#ff8080";
         } else { document.getElementById("envioSelect").style.color = "#000000";}
 
-        if (datosPago !== true) {
+        if (datosPago !== "true") {
             document.getElementById("btnDatosPago").className="btn btn-outline-danger";
         } else {document.getElementById("btnDatosPago").className="btn btn-outline-primary"}
-        if (datosDeDireccion !== true) {
+        if (datosDeDireccion !== "true") {
             document.getElementById("btnDatosEnvio").className="btn btn-outline-danger";
         } else {document.getElementById("btnDatosPago").className="btn btn-outline-primary"}
     }
@@ -244,4 +250,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
         });
     });
 
+    document.getElementById("payment-form").addEventListener("submit",submitEventHandler);
+    document.getElementById("shipp-form").addEventListener("submit",submitEventHandler);
 });
